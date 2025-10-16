@@ -1,0 +1,729 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+}
+.container {
+    width: 100%;
+    /* Thay đổi: Giữ nguyên min-height để nội dung không bị dính vào Music Player Bar */
+    min-height: 100vh; 
+    background: linear-gradient(135deg, #000000, #001F54);
+    position: relative;
+    /* Đã loại bỏ overflow-x: hidden để thanh cuộn dọc không bị che nếu nội dung quá dài */
+    padding-bottom: 90px; /* Thêm padding dưới cùng để chừa chỗ cho Music Player Bar */
+    overflow-x: hidden;
+}
+.left-side {
+    position: absolute;
+    width: 330px;
+    height: 850px;
+    left: 80px;
+    top: 30px;
+    padding-left: 50px;
+    padding-top: 40px;
+    background: linear-gradient(135deg, rgba(0, 31, 84, 0.8), rgba(44, 103, 122, 0.8));
+    border-radius: 30px;
+    
+    display:flex;
+    flex-direction: column;
+    padding: 0;
+}
+.left-logo-title {
+    display:flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 40px;
+    padding-top: 30px;
+    margin: 0;
+}
+.left-logo-title img{
+    width: 50px;  
+    height: 50px;  
+    object-fit: contain; 
+}
+.left-logo-title :hover {
+    cursor: pointer;
+}
+.left-menu {
+    display: flex;
+    flex-direction: column;
+    gap: null; 
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    flex-grow: 1; 
+}
+.left-menu-img {
+    width: 20px;  
+    height: 20px;  
+    object-fit: contain; 
+}
+.left-menu-content {
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+.left-menu-content:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+}
+.left-menu div {
+    
+    border-radius: 10px;
+    transition: background 0.3s ease; 
+}
+.left-menu div:hover {
+    background: rgba(255, 255, 255, 0.1); 
+    cursor: pointer;
+}
+.left-side-bottom {
+    display: flex;
+    padding: 15px 30px;
+    padding-top: 15px;
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 20px;
+    margin: 20px 20px;
+    justify-content: space-between;
+}
+.left-side-bottom-img {
+    width: 25px;  
+    height: 25px;  
+    object-fit: contain;   
+}
+.left-side-bottom img {
+    border-radius: 10px;
+    transition: background 0.3s ease; 
+}
+.left-side-bottom img:hover {
+    background: rgba(255, 255, 255, 0.1); 
+    cursor: pointer;
+}
+.left-side-link {
+    display:flex;
+    margin: 0 20px;
+    justify-content: center;
+}
+.left-side-link a {
+    text-decoration: none;
+    color: #FFD700; 
+    font-weight: 500;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.left-side-link a:hover {
+    color: #FFFFFF; 
+    cursor: pointer;
+}
+.main-content {
+    position: absolute;
+    left: 450px; 
+    top: 30px;
+    /* Giữ nguyên chiều rộng đã chỉnh */
+    width: 800px; 
+    padding: 5px 15px;
+}
+/* Thanh category */
+.category-tags {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+.category-tags button {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    padding: 8px 18px;
+    color: white;
+    transition: all 0.3s ease;
+}
+.category-tags button:hover,
+.category-tags button:first-child {
+    cursor: pointer;
+    background: white;
+    color: black;
+}
+/* Album section */
+.popular-albums h2 {
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+.album-grid {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px; 
+}
+.album-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    width: 250px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.album-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+.playlist-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    width: 250px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.playlist-card:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+.album-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.album-info {
+    padding: 15px;
+}
+.album-info h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.album-info p {
+    font-size: 13px;
+    opacity: 0.8;
+}
+.album-meta {
+    display: flex;
+    gap: 5px;
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 8px;
+}
+.album-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+.album-actions img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.album-actions img:hover {
+    transform: scale(1.2);
+}
+
+/* CSS cho phần mới: Picked for you */
+.picked-for-you h2, .recent h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+/* Thẻ Picked for you */
+.playlist-card {
+    display: flex;
+    background: linear-gradient(135deg, #4F7CF3, #001F54); 
+    border-radius: 15px;
+    overflow: hidden;
+    width: 100%;
+    /* Thay đổi: Thu nhỏ chiều cao */
+    height: 190px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.playlist-image {
+    /* Tỷ lệ ảnh được tăng lên do thẻ nhỏ lại */
+    width: 30%;
+    background-color: #4F7CF3;
+    flex-shrink: 0;
+}
+.playlist-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.playlist-info {
+    width: 70%;
+    padding: 20px 30px; /* Giảm padding một chút */
+    display: flex;
+    flex-direction: column;
+}
+
+.playlist-info p.tag {
+    font-size: 11px; /* Giảm kích thước font */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    margin-bottom: 5px;
+    
+}
+
+.playlist-info h3 {
+    font-size: 20px; /* Giảm kích thước tiêu đề */
+    margin-bottom: 5px;
+}
+
+.playlist-info .description {
+    font-size: 12px; /* Giảm kích thước mô tả */
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+.playlist-meta-button {
+    display:flex;
+    gap: 25px;
+    margin-bottom: 5px;
+}
+.playlist-meta-button button {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    padding: 6px 12px;
+    color: white;
+    transition: all 0.3s ease;
+}
+.playlist-meta-button button:hover{
+    cursor: pointer;
+    background: white;
+    color:black;
+}
+.playlist-actions-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Add spacing between children */
+    align-items: flex-end; /* Align items to the right for consistency */
+}
+
+
+.playlist-meta-data {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 4px 12px;
+    border-radius: 5px;
+    width: 70%; /* Ensure it takes full width */
+}
+
+.playlist-meta-data span {
+    color: black; /* Ensure text is visible on white background */
+    font-size: 12px;
+}
+.meta-data-img img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.meta-data-img {
+    display:flex;
+    justify-content: flex-end;
+    
+}
+
+.meta-data-img img:hover {
+    transform: scale(1.2);
+}
+.recent-list {
+    margin-bottom: 20px; 
+    padding-right: 0; 
+}
+
+.recent-track {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+    border-radius: 7px;
+}
+
+.recent-track:hover {
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+.track-number {
+    width: 40px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.track-album-cover {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.track-album-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.track-info {
+    flex-grow: 1;
+}
+
+.track-info h4 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.track-info p {
+    font-size: 13px;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.track-duration {
+    width: 60px;
+    text-align: right;
+    font-size: 14px;
+    opacity: 0.8;
+    margin-left: 20px;
+}
+
+.track-like {
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.track-like img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.9;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.track-like img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* CSS cho Music Player Bar */
+.music-player-bar {
+    position: absolute;
+    left: 440px;
+    bottom: 0;
+    width:71%;
+    height: 70px;
+    background: linear-gradient(180deg, #000000 0%, #001F54 70%, #4682B4 100%);
+    padding: 5px 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    display:flex;
+    align-items: center;
+}
+.left-music-bar {
+    display: flex;
+    gap: 25px;
+    padding-top: 5px;
+    width: 20%;
+    height: 100%;
+    /* background: white; */
+    /* justify-content: space-between; */
+}
+.left-music-bar-img1 {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.left-music-bar-img1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.left-music-bar-span {
+    display:flex;
+    flex-direction: column;
+    padding-top: 3px;
+    gap: 5px;
+}
+.music-bar-title {
+    font-size: 20px;
+}
+.music-bar-author {
+    font-size: 15px;
+    opacity: 0.7;
+}
+.left-music-bar-img2 {
+    padding-top: 13px;
+}
+.left-music-bar-img2 img {
+    width: 20px;
+    height: 20px;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.left-music-bar-img2 img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+.middle-music-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    gap: null;
+    width:60%;
+    height: 100%;
+}
+.middle-music-bar img {
+    width: 20px;
+    height: 20px;
+    margin: 0 15px;
+    opacity: 0.8;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.middle-music-bar img:hover {
+    cursor: pointer;
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 8px;
+    font-size: 11px;
+    opacity: 0.7;
+}
+.progress-time-current {
+    margin-right: 10px;
+}
+.progress-time-total {
+    margin-left: 10px;
+}
+.progress-bar {
+    flex-grow: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    position: relative;
+}
+.progress-bar-fill {
+    height: 100%;
+    width: 45%; 
+    background: #4F7CF3;
+    border-radius: 2px;
+}
+.player-volume-settings {
+    display: flex;
+    align-items: center;
+    width: 15%;
+    height: 100%;
+    margin-left: 20px;
+    padding-left: 30px;
+    justify-content: space-between;
+}
+.player-volume-settings img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.player-volume-settings img:hover {
+    transform: scale(1.2);
+}
+.volume-slider {
+    width: 80px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+.volume-slider-fill {
+    height: 100%;
+    width: 70%; 
+    background: white;
+    border-radius: 2px;
+}
+/* RIGHT SIDEBAR (CỘT THỨ 3) */
+.right-sidebar {
+    position: absolute;
+    left: 850px; 
+    top: 2px;
+    width: 450px;
+    min-height: 800px;
+    padding: 10px 15px;
+    overflow-y: auto; 
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.151);
+    border-radius: 10px;
+
+}
+
+.right-sidebar h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.search-bar-profile {
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 8px 15px;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    color: white;
+    padding: 5px 10px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-icon-img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.search-icon-img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.popular-artists {
+    margin-bottom: 40px;
+}
+
+.artist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cột */
+    gap: 10px;
+}
+
+.artist-card {
+    text-align: center;
+    cursor: pointer;
+}
+
+.artist-card img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.artist-card img:hover {
+    transform: scale(1.05);
+}
+
+.artist-card h4 {
+    font-size: 12px;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+.top-podcasts {
+    margin-bottom: 40px;
+}
+
+.podcast-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cột */
+    gap: 10px;
+}
+
+.podcast-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    cursor: pointer;
+}
+
+.podcast-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.podcast-card img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+.podcast-card p {
+    font-size: 13px;
+}
+
+.next-in-queue h2 {
+    margin-top: 10px;
+}
+
+.queue-track {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.queue-track:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.queue-track img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.queue-info {
+    flex-grow: 1;
+}
+
+.queue-info h4 {
+    font-size: 14px;
+}
+
+.queue-info p {
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.queue-duration {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-right: 10px;
+}
+
+.queue-more-img {
+    width: 15px;
+    height: 15px;
+    opacity: 0.6;
+}
